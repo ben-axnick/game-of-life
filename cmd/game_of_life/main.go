@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
 
 func Board(dy, dx int) [][]uint8 {
@@ -112,18 +113,15 @@ func main() {
 	// Activate some pixels, probably start with something fixed
 	SeedBoard(board)
 
-	// Display the board, probably just terminal based for starters
-	tick++
-	fmt.Printf("Tick %d\n", tick)
-	DrawBoard(board)
-
-	// Function to calculate next board state from current board state
-	tick++
-	fmt.Printf("Tick %d\n", tick)
-	UpdateBoard(board)
-	DrawBoard(board)
-
 	// Game loop to calculate next game state, display the board
+
+	for {
+		tick++
+		fmt.Printf("Tick %d\n", tick)
+		DrawBoard(board)
+		UpdateBoard(board)
+		time.Sleep(1 * time.Second)
+	}
 
 	// That's the basics out of the way. Other thoughts:
 
